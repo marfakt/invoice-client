@@ -2,17 +2,17 @@
 
 Zarejestruj się na http://marfakt.pl aby uzyskać api_token
 
-Instalacja
+### Instalacja
 
 ```
 php -r "readfile('https://getcomposer.org/installer');" | php
-php composer.phar require "marfakt/invoice-client" "dev-master"
-echo "require __DIR__ . '/vendor/autoload.php';" > test.php
+php composer.phar require "marfakt/invoice-client" "@stable"
+echo "<?php require __DIR__ . '/vendor/autoload.php';" > test.php
 ```
 
 Został utworzony plik test.php w którym możemy testować klienta.
 
-Wystawianie faktur
+### Wystawianie faktur
 
 ```
 $client = new \Marfakt\InvoiceClient('api_token');
@@ -51,13 +51,17 @@ $response = $client->addInvoice(array(
 ```
 W zmiennej $response mamy id oraz hash potrzebny do utworzenia publicznego linku do pliku PDF z fakturą.
 
-Generowanie publicznego linku do pliku PDF dodanej wcześniej faktury
+### Generowanie PDF
+
+Generowanie publicznego linku. 
 
 ```
 $url = \Marfakt\InvoiceClient::pdfUrl($id, $hash);
 ```
 
-Pobieranie listy faktur z danego miesiąca
+### Pobieranie listy faktur
+
+Faktury z obecnego miesiąca.
 
 ```
 $resp = $client->getInvoices(date('Y'), date('m'));
