@@ -1,0 +1,13 @@
+{
+    "name": "mardraze/invoice-client",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "autoload": {
+        "psr-4": {
+            "": "lib"
+        }
+    },
+    "require": {
+        "php": ">=5.3.9"
+    }
+}
