@@ -1,5 +1,5 @@
 {
-    "name": "mardraze/invoice-client",
+    "name": "marfakt/invoice-client",
     "type": "library",
     "license": "BSD-3-Clause",
     "autoload": {
