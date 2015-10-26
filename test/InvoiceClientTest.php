@@ -77,7 +77,7 @@ class InvoiceClientTest extends \PHPUnit_Framework_TestCase
      */
     private static function getInvoiceClient(){
         if(!self::$client){
-            self::$client = new \Marfakt\InvoiceClient('1/5de7f6dbe205965ec012bcfaaaddbcee', 'http://127.0.0.1:8000');
+            self::$client = new \Marfakt\InvoiceClient('3/5ad0f7cfd1ac21e235d5c90fe8479d08', 'http://127.0.0.1:8000');
         }
         return self::$client;
     }
