@@ -1,12 +1,5 @@
 <?php
-/**
- * This source is under Mardraze License
- * http://mardraze.pl/license
- *
- * User: mardraze
- * Date: 09.03.15
- *
- */
+namespace Marfakt;
 
 class InvoiceClient {
 
