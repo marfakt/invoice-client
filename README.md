@@ -51,7 +51,7 @@ $response = $client->addInvoice(array(
 ```
 W zmiennej $response mamy id oraz hash potrzebny do utworzenia publicznego linku do pliku PDF z fakturą.
 
-Publiczny link do pliku PDF dodanej wcześniej faktury
+Generowanie publicznego linku do pliku PDF dodanej wcześniej faktury
 
 ```
 $url = \Marfakt\InvoiceClient::pdfUrl($id, $hash);
@@ -62,3 +62,4 @@ Pobieranie listy faktur z danego miesiąca
 ```
 $resp = $client->getInvoices(date('Y'), date('m'));
 ```
+
