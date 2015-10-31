@@ -39,12 +39,16 @@ class InvoiceClient {
         $url = self::$baseUrl . $url;
         if($method == 'POST'){
             $postdata = json_encode($parameters);
-            $opts = array('http' =>
-                array(
-                    'method'  => 'POST',
-                    'header'  => 'Content-Type: application/json; charset=UTF-8',
-                    'content' => $postdata
-                )
+            $opts = array(
+            		"ssl" => array(
+            				"verify_peer"=>false,
+            				"verify_peer_name"=>false,
+            		),
+            		'http' => array(
+		                    'method'  => 'POST',
+		                    'header'  => 'Content-Type: application/json; charset=UTF-8',
+		                    'content' => $postdata
+	                )
             );
             $context = stream_context_create($opts);
             $result = file_get_contents($url, false, $context);
