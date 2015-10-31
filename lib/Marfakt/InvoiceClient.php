@@ -3,7 +3,7 @@ namespace Marfakt;
 
 class InvoiceClient {
 
-    private static $baseUrl = 'http://marfakt.pl';
+    private static $baseUrl = 'https://marfakt.pl';
     private $lastResult;
     private $apiToken;
 
@@ -37,24 +37,22 @@ class InvoiceClient {
     private function request($method, $url, $parameters = array()){
         $result = null;
         $url = self::$baseUrl . $url;
-        if($method == 'POST'){
-            $postdata = json_encode($parameters);
-            $opts = array(
+        $opts = array(
             		"ssl" => array(
             				"verify_peer"=>false,
             				"verify_peer_name"=>false,
-            		),
-            		'http' => array(
-		                    'method'  => 'POST',
-		                    'header'  => 'Content-Type: application/json; charset=UTF-8',
-		                    'content' => $postdata
-	                )
-            );
-            $context = stream_context_create($opts);
-            $result = file_get_contents($url, false, $context);
-        }else{
-            $result = file_get_contents($url);
+            		)
+        );
+        if($method == 'POST'){
+            $postdata = json_encode($parameters);
+            $opts['http'] = array(
+		        'method'  => 'POST',
+		        'header'  => 'Content-Type: application/json; charset=UTF-8',
+	            'content' => $postdata
+	        );
         }
+        $context = stream_context_create($opts);
+        $result = file_get_contents($url, false, $context);
         $this->lastResult = $result;
         return json_decode($result, true);
     }

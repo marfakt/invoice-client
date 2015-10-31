@@ -61,7 +61,12 @@ class InvoiceClientTest extends \PHPUnit_Framework_TestCase
             )
         ));
         $url = $client->getPdfUrl($resp['data']['id'], $resp['data']['hash']);
-        $content = file_get_contents($url);
+        $content = file_get_contents($url, false, stream_context_create(array(
+        		"ssl" => array(
+        				"verify_peer"=>false,
+        				"verify_peer_name"=>false,
+        		)
+        )));
         $this->assertTrue(strlen($content) > 0);
     }
 
@@ -77,7 +82,9 @@ class InvoiceClientTest extends \PHPUnit_Framework_TestCase
      */
     private static function getInvoiceClient(){
         if(!self::$client){
-            self::$client = new \Marfakt\InvoiceClient('3/5ad0f7cfd1ac21e235d5c90fe8479d08', 'http://127.0.0.1:8000');
+            //self::$client = new \Marfakt\InvoiceClient('3/5ad0f7cfd1ac21e235d5c90fe8479d08', 'http://127.0.0.1:8000');
+            self::$client = new \Marfakt\InvoiceClient('31/b342e769952bdd96b5db09d80c862451');
+        	            
         }
         return self::$client;
     }
