@@ -41,6 +41,7 @@ class InvoiceClientTest extends \PHPUnit_Framework_TestCase
                 )
             )
         ));
+
         $this->assertTrue($resp['success'] == 1 && $resp['data']['id'] > 1);
     }
 
@@ -83,7 +84,7 @@ class InvoiceClientTest extends \PHPUnit_Framework_TestCase
     private static function getInvoiceClient(){
         if(!self::$client){
             //self::$client = new \Marfakt\InvoiceClient('3/5ad0f7cfd1ac21e235d5c90fe8479d08', 'http://127.0.0.1:8000');
-            self::$client = new \Marfakt\InvoiceClient('31/b342e769952bdd96b5db09d80c862451');
+            self::$client = new \Marfakt\InvoiceClient('1/a31516ab768ae6ca27a562dde692cebd');
         	            
         }
         return self::$client;

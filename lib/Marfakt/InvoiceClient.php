@@ -52,8 +52,10 @@ class InvoiceClient {
 	        );
         }
         $context = stream_context_create($opts);
-        $result = file_get_contents($url, false, $context);
+        $result = @file_get_contents($url, false, $context);
         $this->lastResult = $result;
-        return json_decode($result, true);
+        if($result){
+            return json_decode($result, true);
+        }
     }
 }
