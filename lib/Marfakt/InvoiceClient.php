@@ -55,7 +55,7 @@ class InvoiceClient {
         $result = @file_get_contents($url, false, $context);
         $this->lastResult = $result;
         if($result){
-            return json_decode($result, true);
+            return @json_decode($result, true);
         }
     }
 }
